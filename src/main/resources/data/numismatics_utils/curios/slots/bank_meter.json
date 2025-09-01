@@ -1,0 +1,6 @@
+{
+  "icon": "numismatics_utils:slot/bank_meter",
+  "order": 99,
+  "size": 1,
+  "validator_predicates": ["curios:tag"]
+}

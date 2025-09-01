@@ -1,0 +1,12 @@
+{
+    "itemGroup.numismatics_utils": "Numismatics Utils",
+
+    "item.numismatics_utils.bank_meter": "Bank Meter",
+    "item.numismatics_utils.portable_bank_terminal": "Portable Bank Terminal",
+
+    "gui.numismatics_utils.bank_meter": "¤ %s",
+    "info.numismatics_utils.balance": "Balance: ¤ %s",
+
+    "curios.identifier.card": "Card",
+    "curios.identifier.bank_meter": "Bank Meter"
+}

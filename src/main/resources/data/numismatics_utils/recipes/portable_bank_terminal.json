@@ -1,0 +1,26 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "sbs",
+    "sBs",
+    "sls"
+  ],
+  "key": {
+    "s": {
+      "item": "create:brass_sheet"
+    },
+    "B": {
+      "item": "numismatics:bank_terminal"
+    },
+    "b": {
+      "item": "create:redstone_link"
+    },
+    "l": {
+      "item": "create:linked_controller"
+    }
+  },
+  "result": {
+    "item": "numismatics_utils:portable_bank_terminal"
+  },
+  "show_notification": true
+}

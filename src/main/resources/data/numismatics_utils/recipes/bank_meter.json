@@ -1,0 +1,26 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "sbs",
+    "sBs",
+    "sls"
+  ],
+  "key": {
+    "s": {
+      "item": "create:brass_sheet"
+    },
+    "B": {
+      "item": "numismatics:bank_terminal"
+    },
+    "b": {
+      "item": "create:display_board"
+    },
+    "l": {
+      "item": "create:display_link"
+    }
+  },
+  "result": {
+    "item": "numismatics_utils:bank_meter"
+  },
+  "show_notification": true
+}
