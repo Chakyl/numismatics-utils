@@ -3,7 +3,6 @@ package io.github.chakyl.numismaticsutils.registry;
 import io.github.chakyl.numismaticsutils.NumismaticsUtils;
 import io.github.chakyl.numismaticsutils.items.BankMeterItem;
 import io.github.chakyl.numismaticsutils.items.PortableBankTerminalItem;
-import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;

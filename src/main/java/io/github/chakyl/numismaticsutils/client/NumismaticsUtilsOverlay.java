@@ -4,6 +4,7 @@ import io.github.chakyl.numismaticsutils.config.DefaultClientSettings;
 import io.github.chakyl.numismaticsutils.config.NumismaticsConfigClient;
 import io.github.chakyl.numismaticsutils.utils.OverlayUtils;
 import io.github.chakyl.numismaticsutils.utils.StringUtils;
+import net.minecraft.ChatFormatting;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.network.chat.Component;
@@ -34,9 +35,10 @@ public class NumismaticsUtilsOverlay implements IGuiOverlay {
                 int y = NumismaticsConfigClient.getHudY();
                 double scale = NumismaticsConfigClient.getHudScale();
 
+                Component value = Component.literal(StringUtils.formatBalance(meter.getTag().getInt("balance"))).withStyle(ChatFormatting.GOLD);
                 guiGraphics.pose().pushPose();
                 guiGraphics.pose().scale((float) scale, (float) scale, 1F);
-                guiGraphics.drawString(minecraft.font, Component.translatable("gui.numismatics_utils.bank_meter", StringUtils.formatBalance(meter.getTag().getInt("balance"))), x, y, 0xffffff);
+                guiGraphics.drawString(minecraft.font, Component.translatable("gui.numismatics_utils.bank_meter",value), x, y, 0xffffff);
                 guiGraphics.pose().popPose();
             }
         });

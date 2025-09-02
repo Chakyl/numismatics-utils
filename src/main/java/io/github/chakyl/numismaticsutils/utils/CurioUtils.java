@@ -1,26 +1,27 @@
 package io.github.chakyl.numismaticsutils.utils;
 
-import io.github.chakyl.numismaticsutils.NumismaticsUtils;
-import io.github.chakyl.numismaticsutils.registry.ItemRegistry;
-import net.minecraft.client.Minecraft;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
+import net.minecraftforge.common.util.LazyOptional;
 import top.theillusivec4.curios.api.CuriosApi;
-import top.theillusivec4.curios.api.SlotResult;
+import top.theillusivec4.curios.api.type.capability.ICuriosItemHandler;
 
-import java.util.List;
+import java.util.UUID;
+import java.util.concurrent.atomic.AtomicReference;
 
 public class CurioUtils {
 
-    public static boolean playerHasBankMeterEquipped(Player player) {
-        Minecraft mc = Minecraft.getInstance();
-        boolean curioEquipped = false;
-
-        if (mc.level == null || mc.player == null ) return false;
-
-            List<SlotResult> curiosInventory = CuriosApi.getCuriosHelper().findCurios(player, ItemRegistry.BANK_METER.get());
-            curioEquipped = !curiosInventory.isEmpty();
-
-        return curioEquipped;
+    public static UUID getCardCurio(Player player) {
+        LazyOptional<ICuriosItemHandler> curios = CuriosApi.getCuriosInventory(player);
+        AtomicReference<UUID> cardUUID = new AtomicReference<>(player.getUUID());
+        curios.ifPresent(curiosInventory -> {
+            if (!curiosInventory.findCurios("card").isEmpty()) {
+                ItemStack card = curiosInventory.findCurios("card").get(0).stack();
+                if (card.getTag() != null && card.getTag().contains("AccountID")) {
+                    cardUUID.set(card.getTag().getUUID("AccountID"));
+                }
+            }
+        });
+        return cardUUID.get();
     }
 }

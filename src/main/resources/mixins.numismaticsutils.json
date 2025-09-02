@@ -1,0 +1,13 @@
+{
+  "required": true,
+  "package": "io.github.chakyl.numismaticsutils.mixin",
+  "compatibilityLevel": "JAVA_17",
+  "refmap": "mixins.numismaticsutils.refmap.json",
+  "mixins": [
+    "BankTerminalBlockMixin"
+  ],
+  "client": [],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

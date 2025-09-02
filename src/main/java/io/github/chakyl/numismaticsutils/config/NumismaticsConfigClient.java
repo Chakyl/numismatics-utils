@@ -1,15 +1,16 @@
 package io.github.chakyl.numismaticsutils.config;
 
 
-import java.util.Arrays;
+import io.github.chakyl.numismaticsutils.config.DefaultClientSettings.Client;
 import net.minecraftforge.common.ForgeConfigSpec;
 import net.minecraftforge.common.ForgeConfigSpec.ConfigValue;
-import io.github.chakyl.numismaticsutils.config.DefaultClientSettings.Client;
+
 public class NumismaticsConfigClient {
     public static final ForgeConfigSpec CLIENT_SPEC;
     private static ConfigValue<Integer> hudX;
     private static ConfigValue<Integer> hudY;
     private static ConfigValue<Double> hudScale;
+
     static {
         ForgeConfigSpec.Builder builder = new ForgeConfigSpec.Builder();
         setupConfig(builder);
@@ -39,8 +40,7 @@ public class NumismaticsConfigClient {
     private static <T> T getOrDefault(ForgeConfigSpec.ConfigValue<T> config) {
         if (CLIENT_SPEC.isLoaded()) {
             return config.get();
-        }
-        else {
+        } else {
             return config.getDefault();
         }
     }
