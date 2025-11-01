@@ -1,0 +1,9 @@
+{
+  "values": [
+      { "id":  "whimsy_deco:black_atm", "required": false },
+      { "id":  "whimsy_deco:green_atm", "required": false },
+      { "id":  "whimsy_deco:red_atm", "required": false },
+      { "id":  "whimsy_deco:yellow_atm", "required": false },
+      { "id":  "whimsy_deco:blue_atm", "required": false }
+    ]
+}

@@ -4,6 +4,7 @@ import com.mojang.logging.LogUtils;
 import io.github.chakyl.numismaticsutils.config.NumismaticsConfigClient;
 import io.github.chakyl.numismaticsutils.registry.CreativeTab;
 import io.github.chakyl.numismaticsutils.registry.ItemRegistry;
+import io.github.chakyl.numismaticsutils.registry.TagRegistry;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.ModLoadingContext;

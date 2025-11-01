@@ -3,6 +3,7 @@ package io.github.chakyl.numismaticsutils.items;
 import dev.ithundxr.createnumismatics.Numismatics;
 import dev.ithundxr.createnumismatics.content.backend.BankAccount;
 import dev.ithundxr.createnumismatics.util.Utils;
+import io.github.chakyl.numismaticsutils.utils.TerminalUtils;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
@@ -26,28 +27,8 @@ public class PortableBankTerminalItem extends Item {
     @Override
     public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand hand) {
         ItemStack handStack = player.getItemInHand(hand);
-        if (level.isClientSide)
-            return InteractionResultHolder.success(handStack);
-
-
-        BankAccount account = null;
-        UUID cardUUID = getCardCurio(player);
-
-        if (cardUUID != null) {
-            account = Numismatics.BANK.getAccount(cardUUID);
-        }
-
-        if (account == null) {
-            account = Numismatics.BANK.getAccount(player);
-        }
-
-        if (account.isAuthorized(player)) {
-            Utils.openScreen((ServerPlayer) player, account, account::sendToMenu);
-            return InteractionResultHolder.success(handStack);
-        } else {
-            return InteractionResultHolder.fail(handStack);
-        }
+        if (TerminalUtils.openTerminal(level, player)) return InteractionResultHolder.success(handStack);
+        return InteractionResultHolder.fail(handStack);
     }
-
 
 }
