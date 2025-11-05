@@ -1,0 +1,12 @@
+{
+    "itemGroup.numismatics_utils": "货币学：实用物品",
+
+    "item.numismatics_utils.bank_meter": "银行余额计",
+    "item.numismatics_utils.portable_bank_terminal": "便携式银行终端",
+
+    "gui.numismatics_utils.bank_meter": "¤ %s",
+    "info.numismatics_utils.balance": "余额: ¤ %s",
+
+    "curios.identifier.card": "卡片",
+    "curios.identifier.bank_meter": "银行余额计"
+}
