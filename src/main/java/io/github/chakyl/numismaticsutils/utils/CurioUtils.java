@@ -1,7 +1,12 @@
 package io.github.chakyl.numismaticsutils.utils;
 
+import dev.ithundxr.createnumismatics.Numismatics;
+import dev.ithundxr.createnumismatics.content.backend.BankAccount;
+import dev.ithundxr.createnumismatics.util.Utils;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.Level;
 import net.minecraftforge.common.util.LazyOptional;
 import top.theillusivec4.curios.api.CuriosApi;
 import top.theillusivec4.curios.api.type.capability.ICuriosItemHandler;
@@ -23,5 +28,43 @@ public class CurioUtils {
             }
         });
         return cardUUID.get();
+    }
+
+    public static BankAccount getPersonalOrCurioAccount(Level level, Player player) {
+        if (level.isClientSide) return null;
+
+        BankAccount account = null;
+        UUID cardUUID = getCardCurio(player);
+
+        if (cardUUID != null) {
+            account = Numismatics.BANK.getAccount(cardUUID);
+        }
+
+        if (account == null) {
+            account = Numismatics.BANK.getAccount(player);
+        }
+        return account;
+    }
+
+    public static boolean depositIntoPersonalOrCurio(Level level, Player player, int amount) {
+        BankAccount account = getPersonalOrCurioAccount(level, player);
+        if (account == null) return false;
+        if (account.isAuthorized(player)) {
+            account.deposit(amount);
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public static boolean deductFromPersonalOrCurio(Level level, Player player, int amount) {
+        BankAccount account = getPersonalOrCurioAccount(level, player);
+        if (account == null) return false;
+        if (account.isAuthorized(player)) {
+            account.deduct(amount);
+            return true;
+        } else {
+            return false;
+        }
     }
 }
