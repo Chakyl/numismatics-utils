@@ -1,18 +1,17 @@
 package io.github.chakyl.numismaticsutils.config;
 
-
 import io.github.chakyl.numismaticsutils.config.DefaultClientSettings.Client;
-import net.minecraftforge.common.ForgeConfigSpec;
-import net.minecraftforge.common.ForgeConfigSpec.ConfigValue;
+import net.neoforged.neoforge.common.ModConfigSpec;
+import net.neoforged.neoforge.common.ModConfigSpec.ConfigValue;
 
 public class NumismaticsConfigClient {
-    public static final ForgeConfigSpec CLIENT_SPEC;
+    public static final ModConfigSpec CLIENT_SPEC;
     private static ConfigValue<Integer> hudX;
     private static ConfigValue<Integer> hudY;
     private static ConfigValue<Double> hudScale;
 
     static {
-        ForgeConfigSpec.Builder builder = new ForgeConfigSpec.Builder();
+        ModConfigSpec.Builder builder = new ModConfigSpec.Builder();
         setupConfig(builder);
         CLIENT_SPEC = builder.build();
     }
@@ -20,9 +19,8 @@ public class NumismaticsConfigClient {
     private NumismaticsConfigClient() {
     }
 
-    private static void setupConfig(ForgeConfigSpec.Builder builder) {
+    private static void setupConfig(ModConfigSpec.Builder builder) {
         builder.push("Numismatics Utils");
-
 
         hudX = builder.comment(
                         "The horizontal offset of the Bank Meter text (in pixels)\n" + "Default is " + Client.DEFAULT_X_OFFSET + ".")
@@ -35,9 +33,11 @@ public class NumismaticsConfigClient {
         hudScale = builder.comment(
                         "The scale of the Bank Meter text.\n" + "Default is " + Client.DEFAULT_HUD_SCALE + ".")
                 .defineInRange("hud_scale", Client.DEFAULT_HUD_SCALE, Client.HUD_SCALE_MIN, Client.HUD_SCALE_MAX);
+
+        builder.pop();
     }
 
-    private static <T> T getOrDefault(ForgeConfigSpec.ConfigValue<T> config) {
+    private static <T> T getOrDefault(ConfigValue<T> config) {
         if (CLIENT_SPEC.isLoaded()) {
             return config.get();
         } else {
@@ -50,7 +50,7 @@ public class NumismaticsConfigClient {
     }
 
     public static void setHudX(int x) {
-        NumismaticsConfigClient.hudX.set(x);
+        hudX.set(x);
     }
 
     public static int getHudY() {
@@ -58,16 +58,14 @@ public class NumismaticsConfigClient {
     }
 
     public static void setHudY(int y) {
-        NumismaticsConfigClient.hudY.set(y);
+        hudY.set(y);
     }
 
     public static double getHudScale() {
         return getOrDefault(hudScale);
-
     }
 
     public static void setHudScale(double scale) {
-        NumismaticsConfigClient.hudScale.set(scale);
+        hudScale.set(scale);
     }
-
 }

@@ -6,21 +6,14 @@
     "sls"
   ],
   "key": {
-    "s": {
-      "item": "create:brass_sheet"
-    },
-    "B": {
-      "item": "numismatics:bank_terminal"
-    },
-    "b": {
-      "item": "create:display_board"
-    },
-    "l": {
-      "item": "create:display_link"
-    }
+    "s": { "item": "create:brass_sheet" },
+    "B": { "item": "numismatics:bank_terminal" },
+    "b": { "item": "create:display_board" },
+    "l": { "item": "create:display_link" }
   },
   "result": {
-    "item": "numismatics_utils:bank_meter"
+    "id": "numismatics_utils:bank_meter",
+    "count": 1
   },
   "show_notification": true
 }

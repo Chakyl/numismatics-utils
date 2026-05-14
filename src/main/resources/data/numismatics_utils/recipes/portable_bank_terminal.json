@@ -6,21 +6,14 @@
     "sls"
   ],
   "key": {
-    "s": {
-      "item": "create:brass_sheet"
-    },
-    "B": {
-      "item": "numismatics:bank_terminal"
-    },
-    "b": {
-      "item": "create:redstone_link"
-    },
-    "l": {
-      "item": "create:linked_controller"
-    }
+    "s": { "item": "create:brass_sheet" },
+    "B": { "item": "numismatics:bank_terminal" },
+    "b": { "item": "create:redstone_link" },
+    "l": { "item": "create:linked_controller" }
   },
   "result": {
-    "item": "numismatics_utils:portable_bank_terminal"
+    "id": "numismatics_utils:portable_bank_terminal",
+    "count": 1
   },
   "show_notification": true
 }
