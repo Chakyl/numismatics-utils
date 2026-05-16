@@ -2,17 +2,16 @@ package io.github.chakyl.numismaticsutils.config;
 
 
 import io.github.chakyl.numismaticsutils.config.DefaultClientSettings.Client;
-import net.minecraftforge.common.ForgeConfigSpec;
-import net.minecraftforge.common.ForgeConfigSpec.ConfigValue;
+import net.neoforged.neoforge.common.ModConfigSpec;
 
 public class NumismaticsConfigClient {
-    public static final ForgeConfigSpec CLIENT_SPEC;
-    private static ConfigValue<Integer> hudX;
-    private static ConfigValue<Integer> hudY;
-    private static ConfigValue<Double> hudScale;
+    public static final ModConfigSpec CLIENT_SPEC;
+    private static ModConfigSpec.ConfigValue<Integer> hudX;
+    private static ModConfigSpec.ConfigValue<Integer> hudY;
+    private static ModConfigSpec.ConfigValue<Double> hudScale;
 
     static {
-        ForgeConfigSpec.Builder builder = new ForgeConfigSpec.Builder();
+        ModConfigSpec.Builder builder = new ModConfigSpec.Builder();
         setupConfig(builder);
         CLIENT_SPEC = builder.build();
     }
@@ -20,7 +19,7 @@ public class NumismaticsConfigClient {
     private NumismaticsConfigClient() {
     }
 
-    private static void setupConfig(ForgeConfigSpec.Builder builder) {
+    private static void setupConfig(ModConfigSpec.Builder builder) {
         builder.push("Numismatics Utils");
 
 
@@ -37,7 +36,7 @@ public class NumismaticsConfigClient {
                 .defineInRange("hud_scale", Client.DEFAULT_HUD_SCALE, Client.HUD_SCALE_MIN, Client.HUD_SCALE_MAX);
     }
 
-    private static <T> T getOrDefault(ForgeConfigSpec.ConfigValue<T> config) {
+    private static <T> T getOrDefault(ModConfigSpec.ConfigValue<T> config) {
         if (CLIENT_SPEC.isLoaded()) {
             return config.get();
         } else {

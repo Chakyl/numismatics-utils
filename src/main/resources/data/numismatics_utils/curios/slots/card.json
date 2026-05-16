@@ -1,5 +1,5 @@
 {
-  "icon": "numismatics_utils:slot/card",
+  "icon": "numismaticsutils:slot/card",
   "order": 98,
   "size": 1,
   "validator_predicates": ["curios:tag"]

@@ -2,22 +2,23 @@ package io.github.chakyl.numismaticsutils.event;
 
 import io.github.chakyl.numismaticsutils.NumismaticsUtils;
 import io.github.chakyl.numismaticsutils.client.NumismaticsUtilsOverlay;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.client.event.RegisterGuiOverlaysEvent;
-import net.minecraftforge.client.gui.overlay.VanillaGuiOverlay;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.common.Mod;
+import net.minecraft.resources.ResourceLocation;
+import net.neoforged.api.distmarker.Dist;
+import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.fml.common.EventBusSubscriber;
+import net.neoforged.neoforge.client.event.RegisterGuiLayersEvent;
+import net.neoforged.neoforge.client.gui.VanillaGuiLayers;
 
 public class ClientEvents {
 
 
-    @Mod.EventBusSubscriber(modid = NumismaticsUtils.MODID, value = Dist.CLIENT, bus = Mod.EventBusSubscriber.Bus.MOD)
+    @EventBusSubscriber(modid = NumismaticsUtils.MODID, value = Dist.CLIENT)
     public static class ClientModBusEvents {
 
         @SubscribeEvent
-        public static void registerGuiOverlays(RegisterGuiOverlaysEvent event) {
+        public static void registerGuiOverlays(RegisterGuiLayersEvent event) {
             NumismaticsUtilsOverlay.init();
-            event.registerAbove(VanillaGuiOverlay.FROSTBITE.id(), "numismatics_utils", NumismaticsUtilsOverlay.HUD_INSTANCE);
+            event.registerAbove(VanillaGuiLayers.EFFECTS, ResourceLocation.fromNamespaceAndPath(NumismaticsUtils.MODID, "bank_balance"), NumismaticsUtilsOverlay.HUD_INSTANCE);
         }
 
     }

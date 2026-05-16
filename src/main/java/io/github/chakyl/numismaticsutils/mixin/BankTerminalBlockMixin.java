@@ -6,8 +6,9 @@ import dev.ithundxr.createnumismatics.util.Utils;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.InteractionHand;
-import net.minecraft.world.InteractionResult;
+import net.minecraft.world.ItemInteractionResult;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.BlockHitResult;
@@ -23,9 +24,8 @@ import static io.github.chakyl.numismaticsutils.utils.CurioUtils.getCardCurio;
 
 @Mixin(targets = "dev.ithundxr.createnumismatics.content.bank.BankTerminalBlock")
 public abstract class BankTerminalBlockMixin {
-
-    @Inject(method = "use", at = @At(value = "HEAD"), cancellable=true)
-    private void use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit, CallbackInfoReturnable<InteractionResult> cir) {
+    @Inject(method = "useItemOn", at = @At(value = "HEAD"), cancellable = true)
+    private void useItemOn(ItemStack stack, BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hitResult, CallbackInfoReturnable<ItemInteractionResult> cir) {
         if (!level.isClientSide) {
             BankAccount cardAccount;
             UUID cardUUID = getCardCurio(player);
@@ -36,7 +36,7 @@ public abstract class BankTerminalBlockMixin {
                     ServerPlayer var10000 = (ServerPlayer) player;
                     Objects.requireNonNull(cardAccount);
                     Utils.openScreen(var10000, cardAccount, cardAccount::sendToMenu);
-                    cir.setReturnValue(InteractionResult.SUCCESS);
+                    cir.setReturnValue(ItemInteractionResult.SUCCESS);
                 }
             }
         }
