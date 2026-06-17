@@ -20,7 +20,7 @@
     }
   },
   "result": {
-    "item": "numismaticsutils:bank_meter"
+    "id": "numismaticsutils:bank_meter"
   },
   "show_notification": true
 }

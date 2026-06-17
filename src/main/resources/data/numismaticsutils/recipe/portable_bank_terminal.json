@@ -20,7 +20,7 @@
     }
   },
   "result": {
-    "item": "numismaticsutils:portable_bank_terminal"
+    "id": "numismaticsutils:portable_bank_terminal"
   },
   "show_notification": true
 }
