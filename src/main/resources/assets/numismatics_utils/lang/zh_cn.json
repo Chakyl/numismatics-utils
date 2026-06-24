@@ -7,6 +7,6 @@
     "gui.numismatics_utils.bank_meter": "¤ %s",
     "info.numismatics_utils.balance": "余额: ¤ %s",
 
-    "curios.identifier.card": "卡片",
+    "curios.identifier.card": "卡",
     "curios.identifier.bank_meter": "银行余额计"
 }
