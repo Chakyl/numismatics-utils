@@ -142,7 +142,7 @@ dependencies {
     // Example project dependency using a sister or child project:
     // implementation project(":myproject")
     implementation "curse.maven:create-328085:7963363"
-    implementation "curse.maven:numismatics-889722:7948018"
+    implementation "curse.maven:numismatics-889722:8745418"
     implementation "curse.maven:curios-309927:6529130"
     // For more info:
     // http://www.gradle.org/docs/current/userguide/artifact_dependencies_tutorial.html

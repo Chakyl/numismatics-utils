@@ -2,6 +2,7 @@ package io.github.chakyl.numismaticsutils.utils;
 
 import dev.ithundxr.createnumismatics.Numismatics;
 import dev.ithundxr.createnumismatics.content.backend.BankAccount;
+import dev.ithundxr.createnumismatics.content.backend.ReasonHolder;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
@@ -22,7 +23,7 @@ public class CurioUtils {
         curios.ifPresent(curiosInventory -> {
             if (!curiosInventory.findCurios("card").isEmpty()) {
                 ItemStack card = curiosInventory.findCurios("card").get(0).stack();
-                if (card.getComponents().isEmpty() && card.getComponents().has(CARD_ACCOUNT_ID)) {
+                if (!card.getComponents().isEmpty() && card.getComponents().has(CARD_ACCOUNT_ID)) {
                     cardUUID.set(card.getComponents().get(CARD_ACCOUNT_ID));
                 }
             }
@@ -61,7 +62,7 @@ public class CurioUtils {
         BankAccount account = getPersonalOrCurioAccount(level, player);
         if (account == null) return false;
         if (account.isAuthorized(player)) {
-            account.deduct(amount);
+            account.deduct(amount, ReasonHolder.IGNORED);
             return true;
         } else {
             return false;

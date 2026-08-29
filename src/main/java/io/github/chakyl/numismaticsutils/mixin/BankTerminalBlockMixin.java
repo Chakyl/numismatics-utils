@@ -37,6 +37,7 @@ public abstract class BankTerminalBlockMixin {
                     Objects.requireNonNull(cardAccount);
                     Utils.openScreen(var10000, cardAccount, cardAccount::sendToMenu);
                     cir.setReturnValue(ItemInteractionResult.SUCCESS);
+                    cir.cancel();
                 }
             }
         }
