@@ -2,6 +2,7 @@ package io.github.chakyl.numismaticsutils.utils;
 
 import dev.ithundxr.createnumismatics.Numismatics;
 import dev.ithundxr.createnumismatics.content.backend.BankAccount;
+import dev.ithundxr.createnumismatics.content.backend.ReasonHolder;
 import dev.ithundxr.createnumismatics.util.Utils;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.player.Player;
@@ -61,7 +62,7 @@ public class CurioUtils {
         BankAccount account = getPersonalOrCurioAccount(level, player);
         if (account == null) return false;
         if (account.isAuthorized(player)) {
-            account.deduct(amount);
+            account.deduct(amount, ReasonHolder.IGNORED);
             return true;
         } else {
             return false;

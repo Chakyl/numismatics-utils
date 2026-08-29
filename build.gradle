@@ -157,7 +157,7 @@ dependencies {
 
     implementation fg.deobf("maven.modrinth:curios:5.11.1+1.20.1")
     implementation fg.deobf("maven.modrinth:create:1.20.1-6.0.6")
-    implementation fg.deobf("maven.modrinth:numismatics:1.0.15+forge-mc1.20.1")
+    implementation fg.deobf("maven.modrinth:Jdbbtt0i:OYnlR0GB")
     // For more info:
     // http://www.gradle.org/docs/current/userguide/artifact_dependencies_tutorial.html
     // http://www.gradle.org/docs/current/userguide/dependency_management.html
